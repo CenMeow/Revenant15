@@ -1,0 +1,188 @@
+/* style.css */
+:root {
+    --dark-background: #120405; /* 更深的背景 */
+    --card-background: #250a0d;
+    --text-color: #f0f0f0;
+    --primary-accent: #e50914;
+    --button-hover: #ff1f2b; /* 更亮的懸停色 */
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --input-border: #444;
+    --discord-blue: #5865F2;
+}
+
+/* 頁面入場動畫 */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* 加入微妙的徑向漸層背景，更具立體感 */
+    background: radial-gradient(circle at center, #1a080a 0%, var(--dark-background) 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    background: var(--card-background);
+    padding: 30px; /* 增加內距 */
+    border-radius: 15px;
+    /* 更強烈的陰影和微光邊框 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(229, 9, 20, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* 應用入場動畫 */
+    animation: fadeInDown 0.6s ease-out;
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #ccc; /* 稍微淡一點的標籤色 */
+    font-size: 0.95em;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #331518;
+    border: 2px solid var(--input-border); /* 加粗邊框 */
+    border-radius: 10px;
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 更滑順的過渡 */
+}
+
+/* 輸入框聚焦時的動畫效果 */
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-accent);
+    background-color: #3d191d;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.4); /* 加入鮮豔的光暈 */
+    transform: translateY(-2px);
+}
+
+button {
+    background-color: var(--primary-accent);
+    /* 按鈕加入微妙的漸層 */
+    background-image: linear-gradient(to bottom right, var(--primary-accent), #c40710);
+    color: white;
+    padding: 14px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-image: linear-gradient(to bottom right, var(--button-hover), var(--primary-accent));
+    box-shadow: 0 6px 12px rgba(229, 9, 20, 0.4); /* 懸停時發光 */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Flash 訊息樣式優化 */
+.flash-container {
+    margin-bottom: 25px;
+}
+.flash {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-left: 6px solid;
+    display: flex;
+    align-items: center;
+    animation: fadeInDown 0.4s ease-out;
+}
+/* 這裡保留你原本的顏色設定，因為已經很不錯了 */
+.flash.success { background-color: rgba(40, 167, 69, 0.15); border-color: var(--success-color); color: #79f195; }
+.flash.error { background-color: rgba(220, 53, 69, 0.15); border-color: var(--error-color); color: #ff8c99; }
+
+/* Discord 區塊樣式優化 */
+.discord-bar {
+    background-color: #1d090b; /* 稍微不同的背景色區分 */
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(88, 101, 242, 0.3); /* 使用 Discord 藍做微光邊框 */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.discord-username {
+    font-weight: 600;
+    color: var(--discord-blue);
+    display: flex;
+    align-items: center;
+    font-size: 1.05em;
+}
+.discord-username svg {
+    margin-right: 10px;
+    filter: drop-shadow(0 0 2px rgba(88, 101, 242, 0.5));
+}
+.discord-username span {
+    color: var(--text-color);
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: #ff6b77; /* 稍微亮一點的紅色 */
+    padding: 8px 16px;
+    border: 2px solid rgba(220, 53, 69, 0.5);
+    font-size: 0.9em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: auto;
+    font-weight: 600;
+}
+.logout-btn:hover {
+    background-color: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
+}
